@@ -19,6 +19,10 @@ import {
     Dialog,
     DialogBackdrop,
     DialogPanel,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
     Popover,
     PopoverButton,
     PopoverGroup,
@@ -30,135 +34,14 @@ import {
     TabPanels,
 } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { navigation } from '../../assets/Data'
 
-const navigation = {
-    categories: [
-        {
-            id: 'women',
-            name: 'Women',
-            featured: [
-                {
-                    name: 'New Arrivals',
-                    href: '#',
-                    imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-                    imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-                },
-                {
-                    name: 'Basic Tees',
-                    href: '#',
-                    imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-                    imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-                },
-            ],
-            sections: [
-                {
-                    id: 'clothing',
-                    name: 'Clothing',
-                    items: [
-                        { name: 'Tops', href: '#' },
-                        { name: 'Dresses', href: '#' },
-                        { name: 'Pants', href: '#' },
-                        { name: 'Denim', href: '#' },
-                        { name: 'Sweaters', href: '#' },
-                        { name: 'T-Shirts', href: '#' },
-                        { name: 'Jackets', href: '#' },
-                        { name: 'Activewear', href: '#' },
-                        { name: 'Browse All', href: '#' },
-                    ],
-                },
-                {
-                    id: 'accessories',
-                    name: 'Accessories',
-                    items: [
-                        { name: 'Watches', href: '#' },
-                        { name: 'Wallets', href: '#' },
-                        { name: 'Bags', href: '#' },
-                        { name: 'Sunglasses', href: '#' },
-                        { name: 'Hats', href: '#' },
-                        { name: 'Belts', href: '#' },
-                    ],
-                },
-                {
-                    id: 'brands',
-                    name: 'Brands',
-                    items: [
-                        { name: 'Full Nelson', href: '#' },
-                        { name: 'My Way', href: '#' },
-                        { name: 'Re-Arranged', href: '#' },
-                        { name: 'Counterfeit', href: '#' },
-                        { name: 'Significant Other', href: '#' },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 'men',
-            name: 'Men',
-            featured: [
-                {
-                    name: 'New Arrivals',
-                    href: '#',
-                    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-                    imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
-                },
-                {
-                    name: 'Artwork Tees',
-                    href: '#',
-                    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
-                    imageAlt:
-                        'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-                },
-            ],
-            sections: [
-                {
-                    id: 'clothing',
-                    name: 'Clothing',
-                    items: [
-                        { name: 'Tops', href: '#' },
-                        { name: 'Pants', href: '#' },
-                        { name: 'Sweaters', href: '#' },
-                        { name: 'T-Shirts', href: '#' },
-                        { name: 'Jackets', href: '#' },
-                        { name: 'Activewear', href: '#' },
-                        { name: 'Browse All', href: '#' },
-                    ],
-                },
-                {
-                    id: 'accessories',
-                    name: 'Accessories',
-                    items: [
-                        { name: 'Watches', href: '#' },
-                        { name: 'Wallets', href: '#' },
-                        { name: 'Bags', href: '#' },
-                        { name: 'Sunglasses', href: '#' },
-                        { name: 'Hats', href: '#' },
-                        { name: 'Belts', href: '#' },
-                    ],
-                },
-                {
-                    id: 'brands',
-                    name: 'Brands',
-                    items: [
-                        { name: 'Re-Arranged', href: '#' },
-                        { name: 'Counterfeit', href: '#' },
-                        { name: 'Full Nelson', href: '#' },
-                        { name: 'My Way', href: '#' },
-                    ],
-                },
-            ],
-        },
-    ],
-    pages: [
-        { name: 'Company', href: '#' },
-        { name: 'Stores', href: '#' },
-    ],
-}
 
-export default function Navbar() {
+export default function Example() {
     const [open, setOpen] = useState(false)
 
     return (
-        <div className="bg-white">
+        <div className="">
             {/* Mobile menu */}
             <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
                 <DialogBackdrop
@@ -200,7 +83,7 @@ export default function Navbar() {
                             <TabPanels as={Fragment}>
                                 {navigation.categories.map((category) => (
                                     <TabPanel key={category.name} className="space-y-10 px-4 pb-8 pt-10">
-                                        <div className="grid grid-cols-2 gap-x-4">
+                                        <div className="grid grid-cols-2 gap-x-4 z-[999]">
                                             {category.featured.map((item) => (
                                                 <div key={item.name} className="group relative text-sm">
                                                     <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
@@ -264,22 +147,12 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        <div className="border-t border-gray-200 px-4 py-6">
-                            <a href="#" className="-m-2 flex items-center p-2">
-                                <img
-                                    alt=""
-                                    src="https://tailwindui.com/img/flags/flag-canada.svg"
-                                    className="block h-auto w-5 flex-shrink-0"
-                                />
-                                <span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
-                                <span className="sr-only">, change currency</span>
-                            </a>
-                        </div>
+
                     </DialogPanel>
                 </div>
             </Dialog>
 
-            <header className="relative bg-white">
+            <header className="relative ">
                 <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
                     Get free delivery on orders over $100
                 </p>
@@ -392,7 +265,7 @@ export default function Navbar() {
                             </PopoverGroup>
 
                             <div className="ml-auto flex items-center">
-                                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                                {/* <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                                     <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                                         Sign in
                                     </a>
@@ -400,19 +273,42 @@ export default function Navbar() {
                                     <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                                         Create account
                                     </a>
-                                </div>
+                                </div> */}
 
-                                <div className="hidden lg:ml-8 lg:flex">
-                                    <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
-                                        <img
-                                            alt=""
-                                            src="https://tailwindui.com/img/flags/flag-canada.svg"
-                                            className="block h-auto w-5 flex-shrink-0"
-                                        />
-                                        <span className="ml-3 block text-sm font-medium">CAD</span>
-                                        <span className="sr-only">, change currency</span>
-                                    </a>
-                                </div>
+                                {/* menu  */}
+                                <Menu as="div" className="relative ml-3">
+                                    <div>
+                                        <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                            <span className="absolute -inset-1.5" />
+                                            <span className="sr-only">Open user menu</span>
+                                            <img
+                                                alt=""
+                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                className="h-8 w-8 rounded-full"
+                                            />
+                                        </MenuButton>
+                                    </div>
+                                    <MenuItems
+                                        transition
+                                        className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                                    >
+                                        <MenuItem>
+                                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                                Your Profile
+                                            </a>
+                                        </MenuItem>
+                                        <MenuItem>
+                                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                                Settings
+                                            </a>
+                                        </MenuItem>
+                                        <MenuItem>
+                                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                                Sign out
+                                            </a>
+                                        </MenuItem>
+                                    </MenuItems>
+                                </Menu>
 
                                 {/* Search */}
                                 <div className="flex lg:ml-6">

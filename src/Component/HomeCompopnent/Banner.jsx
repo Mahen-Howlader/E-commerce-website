@@ -22,8 +22,10 @@ function Banner() {
 
 
 
-    const items = bannerData.map((item,index) =>  {
-        return <img className="w-full h-[80vh] bg-gray-800 p-2 max-w-[1240px] mx-auto" src={item?.image}></img>
+    const items = bannerData.map((item, index) => {
+        return <div className='h-[40vh] sm:h-[60vh] md:h-[70vh]  lg:h-[80vh]'>
+            <img className="w-full object-cover h-full bg-gray-800 p-2 max-w-[1240px] mx-auto" src={item?.image}></img>
+        </div>
     })
 
 

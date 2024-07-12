@@ -174,7 +174,7 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="md:max-w-md lg:col-span-2">
+                        <div className="md:max-w-md mt-5 md:mt-0 lg:col-span-2">
                             <span className="text-base font-medium tracking-wide text-gray-300">
                                 Subscribe for updates
                             </span>
